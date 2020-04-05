@@ -5,8 +5,8 @@
     <meta charset='UTF-8'>
     <title>Demo app</title>
     <meta name='viewport'
-          content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'/>
-    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps.css'/>
+          content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps.css' />
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps-web.min.js"></script>
     <style>
         #map {
@@ -21,7 +21,6 @@
         var map = tt.map({
             key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
             container: 'map',
-            //valid styles include: basic-main, basic-light, basic-night, hybrid-main, hybrid-night, labels-main, labels-night
             style: 'tomtom://vector/1/basic-main',
             center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
             zoom: 12
@@ -30,39 +29,38 @@
         var config = {
             key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
             style: 'tomtom://vector/1/relative',
-            refresh: 3000
+            refresh: 30000
         };
-
-        map.on('load', function() {
-            //map.addTier(new tt.TrafficFlowTilesTier(config));
-            map.addLayer({
-                'id': 'overlay',
-                'type': 'fill',
-                'source': {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Polygon',
-                            'coordinates': [[
-                                [-73.9582, 40.8007], //Frederick Douglass Sculpture and Water Wall
-                                [-73.9491, 40.7968], //Duke Ellington Statue
-                                [-73.9730, 40.7642], //5 Av/W 59 St Bus stop
-                                [-73.9819, 40.7681], //Columbus Circle
-                                [-73.9582, 40.8007], //Frederick Douglass Sculpture and Water Wall
-                                ]]
+        map.on('load', function () {
+            map.addTier(new tt.TrafficFlowTilesTier(config)).then(function () {
+                map.addLayer({
+                    'id': 'overlay',
+                    'type': 'fill',
+                    'source': {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': 'Polygon',
+                                'coordinates': [[
+                                    [-73.9582, 40.8007], //Frederick Douglass Sculpture and Water Wall
+                                    [-73.9491, 40.7968], //Duke Ellington Statue
+                                    [-73.9730, 40.7642], //5 Av/W 59 St Bus stop
+                                    [-73.9819, 40.7681], //Columbus Circle
+                                    [-73.9582, 40.8007], //Frederick Douglass Sculpture and Water Wall
+                                    ]]
+                            }
                         }
+                    },
+                    'layout': {},
+                    'paint': {
+                        'fill-color': '#db356c',
+                        'fill-opacity': 0.5,
+                        'fill-outline-color': 'black'
                     }
-                },
-                'layout': {},
-                'paint': {
-                    'fill-color': 'magenta',
-                    'fill-opacity': 0.5,
-                    'fill-outline-color': 'black'
-                }
-            }), 'Vector Traffic Outline One Side Parking road';
+                }, 'Vector Traffic Outline One Side Parking road');
+            });
         });
-
     </script>
 </body>
 </html>
