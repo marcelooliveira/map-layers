@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class='use-all-space'>
 <head>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
@@ -22,19 +22,47 @@
             key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
             container: 'map',
             style: 'tomtom://vector/1/basic-main',
-            center: [-0.12634, 51.50276],
-            zoom: 10
+            center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
+            zoom: 12
         });
 
         var config = {
-            key: '<YOUR-TRAFFIC-FLOW-API-KEY>',
+            key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
             style: 'tomtom://vector/1/relative',
-            refresh: 30000
+            refresh: 3000
         };
 
         map.on('load', function() {
             map.addTier(new tt.TrafficFlowTilesTier(config));
+            map.addLayer({
+                'id': 'overlay',
+                'type': 'fill',
+                'source': {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Polygon',
+                            'coordinates': [[
+                                [-73.9582, 40.8006], //Frederick Douglass Sculpture and Water Wall
+                                [-73.9494, 40.7969], //Duke Ellington Statue
+                                [-73.9730, 40.7645], //5 Av/W 59 St Bus stop
+                                [-73.9823, 40.7681], //Columbus Circle
+                                [-73.9582, 40.8006], //Frederick Douglass Sculpture and Water Wall
+                                ]]
+                        }
+                    }
+                },
+                'layout': {},
+                'paint': {
+                    'fill-color': '#db356c',
+                    'fill-opacity': 0.5,
+                    'fill-outline-color': 'black'
+                }
+            }
+            );
         });
+
     </script>
 </body>
 </html>
