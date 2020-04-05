@@ -21,6 +21,7 @@
         var map = tt.map({
             key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
             container: 'map',
+            //valid styles include: basic-main, basic-light, basic-night, hybrid-main, hybrid-night, labels-main, labels-night
             style: 'tomtom://vector/1/basic-main',
             center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
             zoom: 12
@@ -33,7 +34,7 @@
         };
 
         map.on('load', function() {
-            map.addTier(new tt.TrafficFlowTilesTier(config));
+            //map.addTier(new tt.TrafficFlowTilesTier(config));
             map.addLayer({
                 'id': 'overlay',
                 'type': 'fill',
@@ -55,7 +56,7 @@
                 },
                 'layout': {},
                 'paint': {
-                    'fill-color': '#db356c',
+                    'fill-color': 'magenta',
                     'fill-opacity': 0.5,
                     'fill-outline-color': 'black'
                 }
