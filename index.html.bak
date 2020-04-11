@@ -22,8 +22,10 @@
 			container: 'map',
 			style: 'tomtom://vector/1/basic-main',
 			zoom: 12,
-			center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
 			//valid styles include: basic-main, basic-light, basic-night, hybrid-main, hybrid-night, labels-main, and labels-night
+			
+			center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
+			
         });
 
         var config = {

@@ -21,9 +21,8 @@
 			key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
 			container: 'map',
 			style: 'tomtom://vector/1/basic-main',
-			zoom: 3,
 			center: [-96.7098725, 39.0640021],
-			
+			zoom: 3
         });
 
         fetch('https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/USDM_current.geojson')
