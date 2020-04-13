@@ -18,21 +18,20 @@
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.38.0/maps/maps-web.min.js"></script>
     <script>
         const map = tt.map({
-			key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
-			container: 'map',
-			style: 'tomtom://vector/1/basic-main',
-			zoom: 12,
-			center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
-			//valid styles include: basic-main, basic-light, basic-night, hybrid-main, hybrid-night, labels-main, and labels-night
-        });
-
-        var config = {
             key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
-            style: 'tomtom://vector/1/relative',
-            refresh: 30000
+			container: 'map',
+			zoom: 12,
+            center: [-73.9712, 40.7831], //Central Park, Manhattan, NY
+            //valid styles include: basic-main, basic-light, basic-night, hybrid-main, hybrid-night, labels-main, and labels-night
+            style: 'tomtom://vector/1/basic-main',
+        });
+        
+        var config = {
+	        key: '9TMyfYUw9qr63VLXIhLeAGdjhNBjLQu3',
+	        refresh: 3000
         };
-        map.on('load', function () {
-            map.addTier(new tt.TrafficFlowTilesTier(config)).then(function () {
+        map.on('load', function() {
+	        map.addTier(new tt.TrafficFlowTilesTier(config)).then(function () {
                 map.addLayer({
                     'id': 'overlay',
                     'type': 'fill',
@@ -58,9 +57,7 @@
                         'fill-opacity': 0.5,
                         'fill-outline-color': 'black'
                     }
-                }
-                    , 'Vector Traffic Outline One Side Parking road'
-                );
+                }, 'Vector Traffic Outline One Side Parking road');
             });
         });
     </script>
